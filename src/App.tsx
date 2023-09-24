@@ -1,5 +1,15 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback } from "react";
 import { styled } from "styled-components";
+import Accordion from "./components/Accordion";
+
+// Content
+const contents = (
+  <p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat tenetur
+    reiciendis excepturi deserunt dolores, at quae? Odit veniam libero, incidunt
+    in illo eius praesentium quia rerum eaque illum perspiciatis sint.
+  </p>
+);
 
 // TYPE
 
@@ -48,17 +58,17 @@ function App(props: Props) {
   // STATE
   const [isCollaps, setIsCollaps] = useState(false);
 
+  // EVENT
+  const handleClick = useCallback((e) => {
+    e.stopPropagation();
+    if (parentRef.current === null || childRef.current === null) {
+      return;
+    }
+  });
+
   // VIEW
 
-  return (
-    <Container>
-      <Header>{props.title}</Header>
-      <ContentWrapper ref={parentRef}>
-        <Contents ref={childRef}>{props.contents}</Contents>
-      </ContentWrapper>
-      <Button>열기</Button>
-    </Container>
-  );
+  return <Accordion />;
 }
 
 export default App;
