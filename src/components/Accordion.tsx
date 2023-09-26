@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 // Type
 type Props = {
   title?: string;
-  contents?: string;
+  contents?: any;
 };
 
 // Style

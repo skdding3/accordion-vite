@@ -1,7 +1,7 @@
 import Accordion from "./components/Accordion";
 
 // Content
-const contents = (
+const LoremContents = (
   <p>
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat tenetur
     reiciendis excepturi deserunt dolores, at quae? Odit veniam libero, incidunt
@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <h1>Sunki's Accordion</h1>
-      <Accordion title="#1 accordion" contents={contents} />
+      <Accordion title="#1 accordion" contents={LoremContents} />
     </div>
   );
 }
