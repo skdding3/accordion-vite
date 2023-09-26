@@ -16,6 +16,8 @@ function App() {
     <div className="App">
       <h1>Sunki's Accordion</h1>
       <Accordion title="#1 accordion" contents={LoremContents} />
+      <Accordion title="#2 accordion" contents={LoremContents} />
+      <Accordion title="#3 accordion" contents={LoremContents} />
     </div>
   );
 }

@@ -29,12 +29,15 @@ const Button = styled.div`
 
 const ContentWrapper = styled.div`
   height: 0;
-  width: 100%;
+  width: inherit;
+  padding: 0 8px;
   overflow: hidden;
-  transition: height 0.35s ease;
+  transition: height 0.35s ease background 0.35s ease;
 `;
 
-const Contents = styled.div``;
+const Contents = styled.div`
+  padding: 0.1px;
+`;
 
 export default function Accordion(props: Props) {
   // REF
