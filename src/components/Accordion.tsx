@@ -38,17 +38,41 @@ const Contents = styled.div``;
 
 export default function Accordion(props: Props) {
   // REF
-
   const parentRef = useRef(null);
   const childRef = useRef(null);
 
+  // STATE
+  const [isCollapse, setIsCollapse] = useState(false);
+
+  // EVENT
+  const handleButtonClick = useCallback(
+    (event) => {
+      event.stopPropagation();
+      if (parentRef === null || childRef === null) {
+        return;
+      }
+
+      if (parentRef.current.clientHeight > 0) {
+        parentRef.current.style.height = "0";
+        parentRef.current.style.background = "white";
+      } else {
+        parentRef.current.style.height = `${childRef.current.clientHeight}px`;
+        parentRef.current.style.background = "lightgray";
+      }
+      setIsCollapse(!isCollapse);
+    },
+    [isCollapse]
+  );
+  const parentRefHeight = parentRef.current?.style.height ?? "0px";
+  const buttonText = parentRefHeight === "0px" ? "열기" : "닫기";
+
   return (
     <Container>
-      <Header>{props.title}</Header>
+      <Header onClick={handleButtonClick}>{props.title}</Header>
       <ContentWrapper ref={parentRef}>
         <Contents ref={childRef}>{props.contents}</Contents>
       </ContentWrapper>
-      <Button>열기</Button>
+      <Button>{buttonText}</Button>
     </Container>
   );
 }
